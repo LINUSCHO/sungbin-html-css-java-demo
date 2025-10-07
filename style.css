@@ -1,0 +1,827 @@
+/* 전역 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #666;
+    --accent-color: #003366;
+    --bg-color: #fff;
+    --text-color: #1a1a1a;
+    --border-color: #e0e0e0;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    line-height: 1.6;
+    background: var(--bg-color);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 공지 배너 */
+.announcement-bar {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 13px;
+    position: relative;
+    overflow: hidden;
+}
+
+.announcement-slider {
+    position: relative;
+    height: 24px;
+}
+
+.announcement-item {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.announcement-item.active {
+    opacity: 1;
+}
+
+.announcement-link {
+    color: white;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+/* 헤더 */
+.header {
+    background: white;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-menu-btn span {
+    width: 24px;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+.logo h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+}
+
+.main-nav {
+    flex: 1;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    justify-content: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item > a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    display: block;
+    transition: var(--transition);
+}
+
+.nav-item > a:hover {
+    color: var(--accent-color);
+}
+
+/* 드롭다운 메뉴 */
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    margin-top: 10px;
+    min-width: 700px;
+    z-index: 100;
+}
+
+.nav-item:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+
+.dropdown-content {
+    display: flex;
+    padding: 40px;
+    gap: 50px;
+}
+
+.dropdown-column h3 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.dropdown-column ul {
+    list-style: none;
+}
+
+.dropdown-column ul li {
+    margin-bottom: 12px;
+}
+
+.dropdown-column ul li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.dropdown-column ul li a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+/* 헤더 액션 버튼 */
+.header-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+    position: relative;
+    padding: 8px;
+    transition: var(--transition);
+}
+
+.icon-btn:hover {
+    color: var(--accent-color);
+}
+
+.cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent-color);
+    color: white;
+    font-size: 10px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 히어로 섹션 */
+.hero {
+    position: relative;
+    height: 85vh;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.hero-slider {
+    height: 100%;
+    position: relative;
+}
+
+.hero-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    width: 90%;
+    max-width: 600px;
+}
+
+.hero-content h2 {
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 300;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hero-content p {
+    font-size: clamp(16px, 2vw, 24px);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 40px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: var(--accent-color);
+}
+
+.hero-prev,
+.hero-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.3);
+    color: white;
+    border: none;
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 3;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+.hero-prev:hover,
+.hero-next:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+.hero-prev {
+    left: 20px;
+}
+
+.hero-next {
+    right: 20px;
+}
+
+.hero-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.hero-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hero-dot.active {
+    background: white;
+}
+
+/* 섹션 공통 */
+.section-title {
+    text-align: center;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+}
+
+/* 컬렉션 그리드 */
+.collections {
+    padding: 80px 0;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.collection-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.collection-image {
+    overflow: hidden;
+    aspect-ratio: 3/4;
+}
+
+.collection-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.collection-card:hover .collection-image img {
+    transform: scale(1.08);
+}
+
+.collection-info {
+    padding: 25px 0;
+    text-align: center;
+}
+
+.collection-info h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.collection-info p {
+    color: var(--secondary-color);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* 제품 그리드 */
+.products {
+    padding: 80px 0;
+    background: #f9f9f9;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 35px;
+}
+
+.product-card {
+    background: white;
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.wishlist-btn:hover {
+    transform: scale(1.1);
+    color: red;
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--primary-color);
+}
+
+.product-colors {
+    display: flex;
+    gap: 8px;
+}
+
+.color-swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.color-swatch:hover {
+    transform: scale(1.15);
+}
+
+/* 뉴스레터 */
+.newsletter {
+    background: var(--primary-color);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.newsletter h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 300;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.newsletter p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.newsletter-form {
+    max-width: 600px;
+    margin: 0 auto 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 14px;
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.newsletter-consent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 13px;
+}
+
+.newsletter-consent label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* 푸터 */
+.footer {
+    background: #f5f5f5;
+    padding: 60px 0 30px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 13px;
+    transition: var(--transition);
+}
+
+.footer-column ul li a:hover {
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-icon {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 13px;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding-top: 30px;
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.footer-info {
+    margin-top: 15px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .nav-list {
+        gap: 20px;
+    }
+    
+    .dropdown {
+        min-width: 600px;
+    }
+    
+    .dropdown-content {
+        padding: 30px;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .header-container {
+        gap: 8px;
+    }
+    
+    .logo h1 {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        transition: left 0.3s ease;
+        z-index: 2000;
+        overflow-y: auto;
+        box-shadow: 5px 0 20px rgba(0,0,0,0.1);
+    }
+    
+    .main-nav.active {
+        left: 0;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        padding: 80px 30px 30px;
+        gap: 0;
+    }
+    
+    .nav-item > a {
+        padding: 15px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .dropdown {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        min-width: auto;
+        opacity: 1;
+        visibility: visible;
+        margin-top: 0;
+        display: none;
+    }
+    
+    .nav-item.active .dropdown {
+        display: block;
+    }
+    
+    .dropdown-content {
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 25px;
+    }
+    
+    .hero {
+        height: 60vh;
+        min-height: 400px;
+    }
+    
+    .hero-prev,
+    .hero-next {
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+    }
+    
+    .collection-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .collections,
+    .products {
+        padding: 50px 0;
+    }
+    
+    .newsletter {
+        padding: 50px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        gap: 2ch;
+        padding: 12px 15px;
+        justify-content: flex-start;
+    }
+    
+    .mobile-menu-btn {
+        padding: 0;
+    }
+    
+    .header-actions {
+        margin-left: auto;
+    }
+    
+    .logo h1 {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .collection-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content h2 {
+        font-size: 32px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+}
+
